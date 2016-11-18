@@ -4,11 +4,13 @@ import (
 	"fmt"
 )
 
+// insertionSort sorts the array ascending.
 func insertionSort(arr []int) []int {
 	for i := 1; i < len(arr); i++ {
 		buf := arr[i]
 		j := i - 1
-		for j >= 0 && arr[j] > buf {
+
+		for j >= 0 && arr[j] < buf {
 			arr[j+1] = arr[j]
 			j = j - 1
 		}
