@@ -7,6 +7,8 @@ import (
 	"strings"
 	"strconv"
 	"errors"
+
+	"kormen/util"
 )
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -27,7 +29,12 @@ func main() {
 	fmt.Println("enter search item:")
 	searchNumberStr, _ := reader.ReadString('\n')
 
-	arr := strToArr(arrStr)
+	arr, err := util.StrToArr(arrStr)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
 	searchNumber := strToInt(searchNumberStr)
 
 	index, err := binarySearch(searchNumber, arr, 0, len(arr))
@@ -36,22 +43,6 @@ func main() {
 	} else {
 		fmt.Printf("index of founded number: %d\n", index)
 	}
-}
-
-func strToArr(arrStr string) []int {
-	var arr []int
-
-	for _, value := range strings.Split(arrStr, " ") {
-		num, err := strconv.Atoi(strings.Trim(value, "\n"))
-		if err != nil {
-			fmt.Printf("Error by convert string to ints array. Error: %s\n", err)
-			os.Exit(1)
-		}
-
-		arr = append(arr, num)
-	}
-
-	return arr
 }
 
 func strToInt(searchNumberStr string) int {
