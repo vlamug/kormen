@@ -41,11 +41,6 @@ func MaxHeapify(arr []int, i int) []int {
 	return arr
 }
 
-// parent возвращает индекс вершины
-func parent(i int) int {
-	return i/2
-}
-
 // left возвращает левый лист
 func left(i int) int {
 	return 2*i
