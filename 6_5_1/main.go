@@ -54,7 +54,8 @@ func (h *MaxHeap) IncreaseKey(i int, key int) error {
 
 func (h *MaxHeap) Insert(key int) {
 	h.heapSize += 1
-	h.arr[h.heapSize] = 0
+
+	h.arr = append(h.arr, 0)
 	h.IncreaseKey(h.heapSize, key)
 }
 
