@@ -52,11 +52,24 @@ func (h *MaxHeap) IncreaseKey(i int, key int) error {
 	return nil
 }
 
+// Insert вставляет элемент в очередь
 func (h *MaxHeap) Insert(key int) {
 	h.heapSize += 1
 
-	h.arr = append(h.arr, 0)
+	if h.heapSize > cap(h.arr) {
+		h.arr = append(h.arr, 0)
+	} else {
+		h.arr[h.heapSize] = 0
+	}
+
 	h.IncreaseKey(h.heapSize, key)
+}
+
+// MaxHeap возвращает кучу
+func (h *MaxHeap) MaxHeap() []int {
+	maxHeap := h.arr[0:h.heapSize]
+
+	return maxHeap
 }
 
 // maxHeapify поддерживает свойство невозрастающей пирамиды.
