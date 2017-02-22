@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"math"
 )
 
 // MaxHeap структура очереди с приоритетом
@@ -56,10 +57,11 @@ func (h *MaxHeap) IncreaseKey(i int, key int) error {
 func (h *MaxHeap) Insert(key int) {
 	h.heapSize += 1
 
+	min := (-1)*math.MaxInt32
 	if h.heapSize > cap(h.arr) {
-		h.arr = append(h.arr, 0)
+		h.arr = append(h.arr, min)
 	} else {
-		h.arr[h.heapSize] = 0
+		h.arr[h.heapSize] = min
 	}
 
 	h.IncreaseKey(h.heapSize, key)
