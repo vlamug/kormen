@@ -38,7 +38,7 @@ func (h *MaxHeap) ExtractMax() (int, error) {
 }
 
 // IncreaseKey повышает приоритет в очереди
-func (h *MaxHeap) IncreaseKey(i int, key int) error {
+func (h *MaxHeap) IncreaseKey(i, key int) error {
 	if key < h.arr[i] {
 		return errors.New("Новый ключ меньше текущего")
 	}
@@ -57,7 +57,7 @@ func (h *MaxHeap) IncreaseKey(i int, key int) error {
 func (h *MaxHeap) Insert(key int) {
 	h.heapSize += 1
 
-	min := (-1)*math.MaxInt32
+	min := math.MinInt32
 	if h.heapSize > cap(h.arr) {
 		h.arr = append(h.arr, min)
 	} else {
