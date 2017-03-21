@@ -30,8 +30,6 @@ func partition(arr []int, start int, end int) ([]int, int) {
 	i := start-1
 
 	for j := start; j < end-1; j++ {
-		if start == 0 && end == 6 {
-		}
 		if arr[j] <= x {
 			i++
 			arr[i], arr[j] = arr[j], arr[i]
